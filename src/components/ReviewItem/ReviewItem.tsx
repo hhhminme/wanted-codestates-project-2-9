@@ -1,20 +1,19 @@
-import React from "react";
+import React, { ForwardedRef, forwardRef } from "react";
 
 import * as S from "./style";
 
-interface ReviewItempProps {
+interface ReviewItemProps {
   reviewImg: string;
 }
 
-function ReviewItem({ reviewImg }: ReviewItempProps) {
+function ReviewItem(props: ReviewItemProps, ref: ForwardedRef<HTMLDivElement>) {
   return (
-    <>
-      <S.ReviewsImageContainer>
-        <S.Dummy></S.Dummy>
-        <S.ReviewsImage src={reviewImg} />
-      </S.ReviewsImageContainer>
-    </>
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    <S.ReviewsImageContainer ref={ref}>
+      <S.Dummy></S.Dummy>
+      <S.ReviewsImage src={props.reviewImg} />
+    </S.ReviewsImageContainer>
   );
 }
 
-export default ReviewItem;
+export default forwardRef(ReviewItem);
