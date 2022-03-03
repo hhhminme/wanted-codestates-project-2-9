@@ -1,18 +1,31 @@
-import React from "react";
-import { FiThumbsUp, FiPaperclip } from "react-icons/fi";
+import React, { useState } from "react";
+import { FiPaperclip } from "react-icons/fi";
 import { MdComment } from "react-icons/md";
 
 import { useGetReviewById } from "./utils/useGetReviewById";
 import * as S from "./style";
+import { useDispatch } from "react-redux";
+import { reviews } from "src/redux/reviews";
 
 const ReviewDetails = () => {
-  const { productImg, likeCnt, productNm, review } = useGetReviewById();
+  const { id, productImg, likeCnt, productNm, review } = useGetReviewById();
+  const [clickLike, setClickLike] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleLikeBtn = () => {
+    const increaseLike = !clickLike;
+
+    setClickLike((prevClickLike) => !prevClickLike);
+    dispatch(reviews.actions.updateLikeCnt(id, increaseLike));
+  };
+
   return (
     <S.Wrapper>
       <S.Img src={productImg} />
       <S.Mid1>
         <S.Section>
-          <FiThumbsUp size={20} />
+          {clickLike && <S.ClickedLikeBtn onClick={handleLikeBtn} size={20} />}
+          {!clickLike && <S.NotClickedLikeBtn onClick={handleLikeBtn} size={20} />}
           <S.H3>{likeCnt}</S.H3>
         </S.Section>
         <S.Section>

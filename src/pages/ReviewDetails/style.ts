@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { HiOutlineThumbUp, HiThumbUp } from "react-icons/hi";
 
 export const Wrapper = styled.div`
   max-width: 390px;
@@ -6,7 +7,6 @@ export const Wrapper = styled.div`
   padding: 0px 50px;
   display: flex;
   flex-direction: column;
-  /* background-color: orange; */
   gap: 15px;
 `;
 export const Center = styled.div`
@@ -15,6 +15,7 @@ export const Center = styled.div`
   align-items: center;
   justify-items: center;
 `;
+
 export const Img = styled.img`
   object-fit: contain;
   width: 390px;
@@ -28,7 +29,6 @@ export const Mid1 = styled.div`
   align-items: flex-start;
   justify-content: space-between;
 `;
-
 export const H3 = styled.h2`
   font-size: 1.5rem;
 `;
@@ -36,7 +36,6 @@ export const Section = styled.div`
   display: flex;
   gap: 10px;
 `;
-
 export const H1 = styled.h1`
   font-size: 2rem;
 `;
@@ -46,4 +45,10 @@ export const P = styled.p`
   border-radius: 5px;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
   margin-bottom: 15px;
+`;
+export const ClickedLikeBtn = styled(HiThumbUp)`
+  cursor: pointer;
+`;
+export const NotClickedLikeBtn = styled(HiOutlineThumbUp)`
+  cursor: pointer;
 `;

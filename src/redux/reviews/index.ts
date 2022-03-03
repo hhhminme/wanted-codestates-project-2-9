@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { MOCK_DATA } from "./MOCK_DATA";
 import { ReviewState } from "./types";
 
@@ -7,5 +7,21 @@ export const reviews = createSlice({
   initialState: {
     data: MOCK_DATA,
   } as ReviewState,
-  reducers: {},
+  reducers: {
+    updateLikeCnt: {
+      prepare: (id: string, isIncrease: boolean) => ({
+        payload: { id, isIncrease },
+      }),
+      reducer: (
+        state: ReviewState,
+        { payload: { id, isIncrease } }: PayloadAction<{ id: string; isIncrease: boolean }>,
+      ) => {
+        const review = state.data.find((review) => review.id === id);
+        if (!review) return;
+
+        const newLikeCnt = isIncrease ? review.likeCnt + 1 : review.likeCnt - 1;
+        review.likeCnt = newLikeCnt;
+      },
+    },
+  },
 });
