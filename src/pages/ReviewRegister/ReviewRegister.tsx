@@ -1,15 +1,39 @@
 import React, { useRef, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setReview } from "../../redux/reviewSlice";
 
 function ReviewDetails() {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<FileList | null>(null);
   const imageInput = useRef<HTMLInputElement>(null);
+  const dispatch = useDispatch();
 
-  const onClickImage = () => {
-    imageInput.current?.click();
+  const onClickImage = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    // imageInput.current?.click();
+    console.log("log");
+
+    dispatch(
+      setReview({
+        id: "3731858a-9ab8-11ec-b909-0242ac120002",
+        productNm: "에어팟",
+        productImg: "https://i.balaan.io/review/c836c897ce27f22497d14d8e9f461ece.webp",
+        createDt: "2022-02-21",
+        review: "무난하게 데일리로 활용중입니다.",
+        reviewRate: 5,
+        likeCnt: 244,
+        comments: [
+          {
+            commentId: "9bed8c34-9ab9-11ec-b909-0242ac120002",
+            content: "내부 수납공간은 어떤가요?",
+          },
+        ],
+      }),
+    );
   };
 
   const onChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setImages([...e.target.files]);
+    console.log(e.target.files![0]);
+    setImages(e.target.files);
   };
 
   return (
