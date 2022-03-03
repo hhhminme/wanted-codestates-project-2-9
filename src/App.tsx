@@ -11,7 +11,12 @@ import GlobalNavigation from "./components/GlobalNavigation";
 const GlobalContainer = styled.div`
   width: 100%;
   height: 100vh;
+  overflow: scroll;
   background: white;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 function App() {
