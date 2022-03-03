@@ -67,6 +67,7 @@ function ReviewGrid() {
           if (index === reviews.length - 7) {
             return <ReviewItem ref={targetRef} key={index} reviewImg={item.productImg} />;
           }
+          return <ReviewItem reviewImg={item.productImg} key={index} />;
         })}
       </S.ReviewsWrapper>
     </S.ReviewListWrapper>
