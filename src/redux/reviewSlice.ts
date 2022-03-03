@@ -7,7 +7,7 @@ interface TypeReviews {
     {
       id: string;
       productNm: string;
-      productImg: Base64 | string;
+      productImg: string;
       createDt: string;
       review: string;
       reviewRate: number;
@@ -46,13 +46,30 @@ export const reviewSlice = createSlice({
   name: "reviews",
   initialState,
   reducers: {
-    setReview(state, action: PayloadAction<any>) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-      state.reviews.push(action.payload);
+    set: {
+      reducer: (state: TypeReviews, action: PayloadAction<any>) => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        state.reviews.push(action.payload);
+      },
+      prepare: (
+        id: string,
+        productNm: string,
+        productImg: string,
+        createDt: string,
+        review: string,
+        reviewRate: number,
+        likeCnt: number,
+        comments: [
+          {
+            commentId: string;
+            content: string;
+          },
+        ],
+      ) => {
+        return {
+          payload: { id, productNm, productImg, createDt, review, reviewRate, likeCnt, comments },
+        };
+      },
     },
   },
 });
-
-export const { setReview } = reviewSlice.actions;
-
-export default reviewSlice;
