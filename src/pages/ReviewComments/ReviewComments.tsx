@@ -21,13 +21,15 @@ const ReviewComments: React.FC = () => {
   return (
     <S.Container>
       <S.Wrapper>
-        <S.Title>댓글 달기</S.Title>
+        <S.Header>댓글 달기</S.Header>
         <S.Comments>
           {comments.map((item) => (
             <Comment key={item.commentId} comment={item.comment} />
           ))}
         </S.Comments>
-        <S.CommentButton>댓글 달기</S.CommentButton>
+        <S.Footer>
+          <S.CommentButton>댓글 달기</S.CommentButton>
+        </S.Footer>
       </S.Wrapper>
     </S.Container>
   );

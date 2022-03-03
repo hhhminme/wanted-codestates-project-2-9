@@ -1,4 +1,4 @@
-export type CommentData = {
+export interface CommentData {
   commentId: string;
   comment: string;
-};
+}
