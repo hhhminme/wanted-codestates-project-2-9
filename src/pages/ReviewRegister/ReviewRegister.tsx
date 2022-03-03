@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setReview } from "../../redux/reviewSlice";
+import { reviewSlice } from "../../redux/reviewSlice";
 
 function ReviewDetails() {
   const [images, setImages] = useState<FileList | null>(null);
@@ -9,13 +9,13 @@ function ReviewDetails() {
 
   const onClickImage = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    // imageInput.current?.click();
     console.log("log");
 
     dispatch(
-      setReview({
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+      reviewSlice.actions.set({
         id: "3731858a-9ab8-11ec-b909-0242ac120002",
-        productNm: "에어팟",
+        productNm: "맥북 M1 프로 14인치",
         productImg: "https://i.balaan.io/review/c836c897ce27f22497d14d8e9f461ece.webp",
         createDt: "2022-02-21",
         review: "무난하게 데일리로 활용중입니다.",

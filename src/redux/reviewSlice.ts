@@ -51,23 +51,23 @@ export const reviewSlice = createSlice({
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         state.reviews.push(action.payload);
       },
-      prepare: (
-        id: string,
-        productNm: string,
-        productImg: string,
-        createDt: string,
-        review: string,
-        reviewRate: number,
-        likeCnt: number,
+      prepare: (reviewData: {
+        id: string;
+        productNm: string;
+        productImg: string;
+        createDt: string;
+        review: string;
+        reviewRate: number;
+        likeCnt: number;
         comments: [
           {
             commentId: string;
             content: string;
           },
-        ],
-      ) => {
+        ];
+      }) => {
         return {
-          payload: { id, productNm, productImg, createDt, review, reviewRate, likeCnt, comments },
+          payload: { reviewData },
         };
       },
     },
