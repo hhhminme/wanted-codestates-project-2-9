@@ -1,7 +1,8 @@
 import React from "react";
+import * as S from "./style";
 
 function ReviewList() {
-  return <div>ReviewList</div>;
+  return <div>list</div>;
 }
 
 export default ReviewList;
