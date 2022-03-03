@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
   overflow-y: scroll;
 `;
 
-export const Header = styled.h1`
+export const Title = styled.h1`
   font-size: 1.6rem;
   text-align: center;
   margin-top: 15px;
