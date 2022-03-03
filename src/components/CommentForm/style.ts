@@ -28,8 +28,9 @@ export const Title = styled.h1`
 `;
 
 export const Textarea = styled.textarea`
-  font-size: 1.6rem;
   height: 200px;
+  font-size: 1.6rem;
+  padding-left: 7px;
 `;
 
 export const TextCounter = styled.div`
