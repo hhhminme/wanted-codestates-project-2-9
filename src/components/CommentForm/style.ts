@@ -11,11 +11,10 @@ export const Background = styled.div`
   z-index: 100;
 `;
 
-export const Form = styled.form`
+export const Form = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
   background-color: white;
   height: 350px;
   width: 390px;

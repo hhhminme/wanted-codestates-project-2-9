@@ -27,7 +27,6 @@ const ReviewComments: React.FC = () => {
 
   return (
     <S.Container>
-      {show && <CommentForm />}
       <S.Wrapper>
         <S.Title>댓글 달기</S.Title>
         <S.Comments>
@@ -39,6 +38,7 @@ const ReviewComments: React.FC = () => {
           <S.CommentButton onClick={handleClickBtn}>댓글 달기</S.CommentButton>
         </S.Footer>
       </S.Wrapper>
+      {show && <CommentForm setShow={setShow} />}
     </S.Container>
   );
 };
