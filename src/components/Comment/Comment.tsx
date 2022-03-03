@@ -2,8 +2,16 @@ import React from "react";
 
 import * as S from "./style";
 
-const Comment: React.FC = () => {
-  return <S.Wrapper></S.Wrapper>;
+interface Props {
+  comment: string;
+}
+
+const Comment: React.FC<Props> = ({ comment }) => {
+  return (
+    <S.Wrapper>
+      <span>{comment}</span>
+    </S.Wrapper>
+  );
 };
 
 export default Comment;

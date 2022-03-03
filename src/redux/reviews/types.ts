@@ -6,12 +6,10 @@ type Reviews = {
   review: string;
   reviewRate: number;
   likeCnt: number;
-  comments: [
-    {
-      commentId: string;
-      content: string;
-    },
-  ];
+  comments: {
+    commentId: string;
+    comment: string;
+  }[];
 }[];
 
 export interface ReviewState {

@@ -9,7 +9,75 @@ export const MOCK_DATA = [
     likeCnt: 244,
     comments: [
       {
-        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb7",
+        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb11",
+        comment: " 정말 멋져요",
+      },
+      {
+        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb22",
+        comment: " 정말 멋져요",
+      },
+      {
+        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb733",
+        comment: " 정말 멋져요",
+      },
+      {
+        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb74",
+        comment: " 정말 멋져요",
+      },
+      {
+        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb75",
+        comment: " 정말 멋져요",
+      },
+      {
+        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb76",
+        comment: " 정말 멋져요",
+      },
+      {
+        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb77",
+        comment: " 정말 멋져요",
+      },
+      {
+        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb78",
+        comment: " 정말 멋져요",
+      },
+      {
+        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb79",
+        comment: " 정말 멋져요",
+      },
+      {
+        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb710",
+        comment: " 정말 멋져요",
+      },
+      {
+        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb711",
+        comment: " 정말 멋져요",
+      },
+      {
+        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb712",
+        comment: " 정말 멋져요",
+      },
+      {
+        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb713",
+        comment: " 정말 멋져요",
+      },
+      {
+        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb714",
+        comment: " 정말 멋져요",
+      },
+      {
+        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb715",
+        comment: " 정말 멋져요",
+      },
+      {
+        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb76fyt",
+        comment: " 정말 멋져요",
+      },
+      {
+        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb7cc",
+        comment: " 정말 멋져요",
+      },
+      {
+        commentId: "9e7103ed-71dc-4dcf-a007-f245d8d2dcb7cty",
         comment: " 정말 멋져요",
       },
     ],
