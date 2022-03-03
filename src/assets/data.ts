@@ -1,4 +1,20 @@
-export default [
+export type Review = {
+  id: string;
+  productNm: string;
+  productImg: string;
+  likeCnt: number;
+  createDt: string;
+  review: string;
+  reviewRate: number;
+  comments: {
+    commentId?: string;
+    content?: string;
+  }[];
+};
+
+export type ReviewData = Review[];
+
+const data: ReviewData = [
   {
     id: "3731858a-9ab8-11ec-b909-0242ac120002",
     productNm: "블랙 핸드백",
@@ -377,3 +393,5 @@ export default [
     ],
   },
 ];
+
+export default data;
