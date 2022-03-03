@@ -1,9 +1,24 @@
 import React, { useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
+import * as S from "./style";
+import Stars from "src/components/Stars";
 import { reviewSlice } from "../../redux/reviewSlice";
 
 function ReviewDetails() {
+  const starArray = [1, 2, 3, 4, 5];
   const [images, setImages] = useState<FileList | null>(null);
+
+  const [rating, setRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState(0);
+
+  const onMouseEnter = (index: number) => setHoverRating(index);
+  // 마우스가 별 위에 올라가면 스테이트를 변경.
+  const onMouseLeave = () => setHoverRating(0);
+  // 마우스가 별 밖으로 나가면 스테이트를 0으로 변경.
+  const onSaveRating = (index: number) => setRating(index);
+  // 클릭시, 별 인덱스를 스테이트에 저장.
+
   const imageInput = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
 
@@ -49,6 +64,23 @@ function ReviewDetails() {
         </label>
         <input type="file" onChange={onChangeImage} ref={imageInput} multiple hidden />
         <button onClick={onClickImage}>이미지 업로드</button>
+
+        <S.starWrap>
+          {starArray.map((idx) => {
+            return (
+              <Stars
+                key={idx}
+                index={idx}
+                rating={rating}
+                hoverRating={hoverRating}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+                onSaveRating={onSaveRating}
+              />
+            );
+          })}
+        </S.starWrap>
+
         <button type="submit">리뷰 등록하기</button>
       </form>
     </div>
