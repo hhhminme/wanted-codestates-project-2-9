@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { reviewSlice } from "./reviewSlice";
+
+import reviewReducer from "./reviewSlice";
 
 export const store = configureStore({
   reducer: {
-    reviewSlice: reviewSlice.reducer,
+    reviews: reviewReducer,
   },
+  devTools: process.env.NODE_ENV !== "production",
 });
 
 export type RootState = ReturnType<typeof store.getState>;

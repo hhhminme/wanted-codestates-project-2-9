@@ -1,9 +1,10 @@
 import React, { useRef, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
+import { RootState } from "src/redux/store";
+import { add } from "../../redux/reviewSlice";
 import * as S from "./style";
 import Stars from "src/components/Stars";
-import { reviewSlice } from "../../redux/reviewSlice";
 
 function ReviewDetails() {
   const starArray = [1, 2, 3, 4, 5];
@@ -21,14 +22,13 @@ function ReviewDetails() {
 
   const imageInput = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
+  const reviews = useSelector((state: RootState) => state.reviews);
 
   const onClickImage = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log("log");
 
     dispatch(
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-      reviewSlice.actions.set({
+      add({
         id: "3731858a-9ab8-11ec-b909-0242ac120002",
         productNm: "맥북 M1 프로 14인치",
         productImg: "https://i.balaan.io/review/c836c897ce27f22497d14d8e9f461ece.webp",
@@ -47,9 +47,10 @@ function ReviewDetails() {
   };
 
   const onChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.files![0]);
     setImages(e.target.files);
   };
+
+  console.log(reviews);
 
   return (
     <div>
