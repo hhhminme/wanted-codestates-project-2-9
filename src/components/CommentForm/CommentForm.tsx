@@ -24,7 +24,7 @@ const CommentForm: React.FC<Props> = ({ setShow }) => {
     <S.Background>
       <S.Form>
         <S.Title>댓글을 입력해주세요</S.Title>
-        <S.Textarea onChange={handleChange} />
+        <S.Textarea maxLength={500} onChange={handleChange} />
         <S.TextCounter>{textLength} / 500</S.TextCounter>
         <S.Wrapper>
           <S.CancelBtn onClick={handleClickCancelBtn}>취소</S.CancelBtn>
