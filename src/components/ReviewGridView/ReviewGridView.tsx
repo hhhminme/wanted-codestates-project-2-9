@@ -7,6 +7,7 @@ import * as S from "./style";
 import ReviewItem from "src/components/ReviewGridItem";
 import SortOptions from "../SortOptions";
 import { RootState } from "src/redux/store";
+import { isNotEmittedStatement } from "typescript";
 
 const sortOptionsData = [
   { id: 1, option: "최신순" },
@@ -18,10 +19,12 @@ const sortOptionsData = [
 function ReviewGrid() {
   const itemData = useSelector((state: RootState) => state.reviews);
   const [sortOption, setSortOption] = useState("최신순");
-  const [reviews, setReviews] = useState<ReviewData>(itemData.slice(0, 30));
+  const [reviews, setReviews] = useState<ReviewData>(itemData);
   const [reviewsPage, setReviewsPage] = useState<number>(0);
   const observerRef = React.useRef<IntersectionObserver>();
   const targetRef = useRef<HTMLDivElement>(null);
+
+  console.log(itemData);
 
   useEffect(() => {
     const reviewsCopy = [...reviews];
