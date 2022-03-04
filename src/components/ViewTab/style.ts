@@ -6,6 +6,7 @@ export const TabBlock = styled.section`
   width: 100%;
   justify-content: space-evenly;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const TabItem = styled.div<{ active: boolean }>`
