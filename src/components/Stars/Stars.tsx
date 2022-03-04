@@ -1,5 +1,4 @@
-import React, { useMemo, useRef, useState } from "react";
-import * as S from "./style";
+import React, { useMemo } from "react";
 
 import { AiFillStar } from "react-icons/ai";
 
