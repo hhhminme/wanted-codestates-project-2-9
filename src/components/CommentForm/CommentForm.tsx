@@ -28,7 +28,7 @@ const CommentForm: React.FC<Props> = ({ setShow, id }) => {
     setShow(false);
   };
   return (
-    <S.Background >
+    <S.Background>
       <S.Form>
         <S.Title>댓글을 입력해주세요</S.Title>
         <S.Textarea maxLength={500} onChange={handleChange} />
