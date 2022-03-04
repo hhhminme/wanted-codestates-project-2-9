@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   gap: 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: white;
 
   & + & {
     margin-top: 30px;
