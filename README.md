@@ -4,6 +4,7 @@
 
 <p>
   <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" />
+<<<<<<< Updated upstream
   <img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" />
   <img src="https://img.shields.io/badge/react--icons-brightgreen?style=for-the-badge" />
   <img src="https://img.shields.io/badge/redux-green?style=for-the-badge" />
@@ -47,3 +48,55 @@
 | 오카무라카에 | [kaehehehe](https://github.com/kaehehehe)         | 
 | 허민         | [hhhminme](https://github.com/hhhminme)        |
 | 전호용       | [mooroom](https://github.com/mooroom)           |
+=======
+  <img src="https://img.shields.io/badge/Typescript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white" />
+  <img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=ESLint&logoColor=white" />
+  <img src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=Prettier&logoColor=white" />
+  <img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" />
+  <img src="https://img.shields.io/badge/react--icons-brightgreen?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white" />
+  <img src="https://img.shields.io/badge/redux tool kit-764ABC?style=for-the-badge&logo=Redux&logoColor=white" />
+  <img src="https://img.shields.io/badge/react--redux-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/react--router--dom-CA4245?style=for-the-badge&logo=React-Router&logoColor=white" />
+
+</p>
+
+## 구현 개요
+
+고객이 리뷰를 등록 하고 리뷰를 확인할 수 있는 기능을 구현합니다.
+
+- 리뷰 등록 페이지 : 리뷰를 등록하는 페이지
+- 상품 리뷰 리스트 페이지 : 고객이 구매한 상품에 대한 전체 리뷰를 확인 할 수 있는 페이지
+- 상품 리뷰 상세 페이지 : 특정 리뷰를 클릭하면 보이는 리뷰 상세 페이지
+
+> 리뷰의 정보는 redux를 통해 관리합니다. ex) 리뷰 등록 → 리뷰 목록 배열에 저장 → 리뷰 상세에서 확인 가능
+
+- **리뷰 등록 페이지 ( 장민, 민 ) - 1팀**
+  - 리뷰 제목, 이미지 선택 , 평점(별점 5점 만 점) 등록
+  - 리뷰등록 페이지는 등록(입력) 기능만 있는 간단한 페이지로 구현 합니다.
+- **리뷰 리스트 페이지 (호용, 상우) - 2팀**
+
+  - 리뷰리스트 무한 스크롤
+  - 정렬(최신순, 리뷰카운트순, 랜덤 정렬)
+  - 리뷰 목록 표시 형태 선택(그리드 뷰,리스트 뷰)
+
+- **리뷰 상세 페이지 (동진, 카에) - 3팀**
+  - 리뷰 상세 이미지
+  - 리뷰 댓글 달기
+  - 좋아요
+  - 링크 공유
+
+[참조 링크](https://balaan.co.kr/m2/main/contents.php)
+
+## 구현 내용
+
+### 리뷰 등록 페이지 ( 장민, 민 ) - 1팀
+
+평점(별점)은 라이브러리를 사용하지 않고 직접 구현을 하였습니다. 평점의 index, 별 위에 hover 됐을 때 index, 클릭되어 저장된 평점의 index를 비교하여 반복문을 통해 평점을 구현하였습니다.
+
+리뷰 등록 시 사용자가 올바르지 못한 정보를 입력하거나 누락할 수도 있기 때문에 리뷰 작성 시 필요한 항목에 대해 유효성 검사를 하였습니다. 리뷰 제목과 리뷰 내용은 정규표현식을 활용하였습니다. 이미지와 평점을 포함한 항목을 사용자가 입력하지 않았을 경우 모달을 통해 사용자에게 알려줍니다.
+
+### 리뷰 리스트 페이지 (호용, 상우) - 2팀
+
+### 리뷰 상세 페이지 (동진, 카에) - 3팀
+>>>>>>> Stashed changes
