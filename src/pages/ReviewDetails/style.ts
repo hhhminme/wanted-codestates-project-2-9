@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { HiOutlineThumbUp, HiThumbUp } from "react-icons/hi";
+import { MdComment } from "react-icons/md";
+import { FiPaperclip } from "react-icons/fi";
 
 export const Wrapper = styled.div`
   max-width: 390px;
@@ -31,10 +33,12 @@ export const Mid1 = styled.div`
 `;
 export const H3 = styled.h2`
   font-size: 1.5rem;
+  margin: 0px;
 `;
 export const Section = styled.div`
   display: flex;
   gap: 10px;
+  align-items: center;
 `;
 export const H1 = styled.h1`
   font-size: 2rem;
@@ -50,5 +54,11 @@ export const ClickedLikeBtn = styled(HiThumbUp)`
   cursor: pointer;
 `;
 export const NotClickedLikeBtn = styled(HiOutlineThumbUp)`
+  cursor: pointer;
+`;
+export const CommentBtn = styled(MdComment)`
+  cursor: pointer;
+`;
+export const ShareBtn = styled(FiPaperclip)`
   cursor: pointer;
 `;

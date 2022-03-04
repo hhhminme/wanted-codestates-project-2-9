@@ -6,14 +6,14 @@ type Reviews = {
   review: string;
   reviewRate: number;
   likeCnt: number;
-  comments: [
-    {
+  comments: TypeComments;
+};
+type TypeComments =
+  | {
       commentId: string;
       content: string;
-    },
-  ];
-}[];
-
+    }[]
+  | [];
 export interface ReviewState {
-  data: Reviews;
+  data: Reviews[];
 }
