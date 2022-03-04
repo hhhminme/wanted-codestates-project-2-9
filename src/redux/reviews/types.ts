@@ -15,3 +15,8 @@ type Reviews = {
 export interface ReviewState {
   data: Reviews;
 }
+
+export interface Payload {
+  id: string,
+  comment: string;
+}

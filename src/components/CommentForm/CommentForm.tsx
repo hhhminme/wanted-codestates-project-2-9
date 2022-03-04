@@ -1,16 +1,22 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import * as S from "./style";
+import { addComment } from "../../redux/reviews/index";
 
 interface Props {
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
+  id: string;
 }
 
-const CommentForm: React.FC<Props> = ({ setShow }) => {
+const CommentForm: React.FC<Props> = ({ setShow, id }) => {
   const [textLength, setTextLength] = useState(0);
+  const [comment, setComment] = useState("");
+  const dispatch = useDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTextLength(e.target.value.length);
+    setComment(e.target.value);
   };
 
   const handleClickCancelBtn = () => {
@@ -18,6 +24,7 @@ const CommentForm: React.FC<Props> = ({ setShow }) => {
   };
 
   const handleClickConfirmBtn = () => {
+    dispatch(addComment({ comment, id }));
     setShow(false);
   };
   return (

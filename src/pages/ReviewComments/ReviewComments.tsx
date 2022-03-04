@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { RootState } from "src/redux/store";
+import { useSelector } from "react-redux";
 
 import * as S from "./style";
-import { useSelector } from "react-redux";
-import { RootState } from "src/redux/store";
 import Comment from "src/components/Comment";
 import { CommentData } from "./model";
 import CommentForm from "src/components/CommentForm";
@@ -15,11 +15,10 @@ const ReviewComments: React.FC = () => {
   const [comments, setComments] = useState<CommentData[] | []>([]);
   const [show, setShow] = useState(false);
 
-  //
   useEffect(() => {
     const targetReview = data.data.filter((item) => item.id === id);
     setComments(targetReview[0].comments);
-  }, []);
+  }, [show]);
 
   const handleClickBtn = () => {
     setShow(true);
@@ -38,7 +37,7 @@ const ReviewComments: React.FC = () => {
           <S.CommentButton onClick={handleClickBtn}>댓글 달기</S.CommentButton>
         </S.Footer>
       </S.Wrapper>
-      {show && <CommentForm setShow={setShow} />}
+      {show && <CommentForm setShow={setShow} id={id} />}
     </S.Container>
   );
 };
