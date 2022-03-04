@@ -1,14 +1,17 @@
 import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 
 import { RootState } from "src/redux/store";
 import { add } from "../../redux/reviewSlice";
 import * as S from "./style";
 import Stars from "src/components/Stars";
+import { Blob } from "buffer";
+import { Review } from "../../redux/reviewSlice";
 
 function ReviewDetails() {
   const starArray = [1, 2, 3, 4, 5];
-  const [images, setImages] = useState<FileList | null>(null);
+  const [images, setImages] = useState<string[] | null>(null);
 
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
@@ -20,51 +23,77 @@ function ReviewDetails() {
   const onSaveRating = (index: number) => setRating(index);
   // 클릭시, 별 인덱스를 스테이트에 저장.
 
+  const titleInput = useRef<HTMLInputElement>(null);
+  const contentInput = useRef<HTMLInputElement>(null);
   const imageInput = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
   const reviews = useSelector((state: RootState) => state.reviews);
 
-  const onClickImage = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClickUpload = (e: React.MouseEvent<HTMLButtonElement>) => {
+    imageInput.current?.click();
+    console.dir(e.target);
+    console.log("click");
+  };
+
+  const handleChangeUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    const blobFiles: string[] = [];
+    console.log(e.target.files);
+
+    if (files) {
+      // @ts-ignore
+      for (const file of files) {
+        console.log(file);
+        // @ts-ignore
+        blobFiles.push(URL.createObjectURL(file as Blob));
+
+        setImages(blobFiles);
+      }
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    dispatch(
-      add({
-        id: "3731858a-9ab8-11ec-b909-0242ac120002",
-        productNm: "맥북 M1 프로 14인치",
-        productImg: "https://i.balaan.io/review/c836c897ce27f22497d14d8e9f461ece.webp",
-        createDt: "2022-02-21",
-        review: "무난하게 데일리로 활용중입니다.",
-        reviewRate: 5,
-        likeCnt: 244,
-        comments: [
-          {
-            commentId: "9bed8c34-9ab9-11ec-b909-0242ac120002",
-            content: "내부 수납공간은 어떤가요?",
-          },
-        ],
-      }),
-    );
+    if (images) {
+      const data: Review = {
+        id: uuidv4(),
+        // @ts-ignore
+        productNm: titleInput.current.value,
+        productImg: images,
+        createDt: Date.now(),
+        // @ts-ignore
+        review: contentInput.current.value,
+        reviewRate: rating,
+        likeCnt: 0,
+        comments: [],
+      };
+      dispatch(add(data));
+      console.log("submited!!!");
+    }
   };
 
-  const onChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setImages(e.target.files);
-  };
-
-  console.log(reviews);
+  console.log("images", images);
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>
           제목
-          <input type="text"></input>
+          <input type="text" ref={titleInput}></input>
         </label>
         <label>
           내용
-          <input type="textarea" />
+          <input type="textarea" ref={contentInput} />
         </label>
-        <input type="file" onChange={onChangeImage} ref={imageInput} multiple hidden />
-        <button onClick={onClickImage}>이미지 업로드</button>
+        <input
+          type="file"
+          onChange={handleChangeUpload}
+          ref={imageInput}
+          accept="image/*"
+          multiple
+          hidden
+        />
+        <button onClick={handleClickUpload}>이미지 업로드</button>
 
         <S.starWrap>
           {starArray.map((idx) => {
@@ -81,9 +110,25 @@ function ReviewDetails() {
             );
           })}
         </S.starWrap>
-
         <button type="submit">리뷰 등록하기</button>
       </form>
+      {/* 미리보기 */}
+      {images &&
+        images.map((image, idx) => <img style={{ width: "100px" }} key={idx} src={image} />)}
+
+      {/* 테스트 */}
+      {reviews &&
+        reviews.map((review, idx) => (
+          <div key={idx}>
+            <h2>{review.productNm}</h2>
+            <h2>{review.review}</h2>
+            <h2>{review.reviewRate}</h2>
+            <h2>{review.createDt}</h2>
+            {review.productImg.map((img, id) => (
+              <img style={{ width: "100px" }} key={id} src={img} />
+            ))}
+          </div>
+        ))}
     </div>
   );
 }
