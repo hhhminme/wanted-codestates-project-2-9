@@ -27,8 +27,11 @@ const ReviewComments: React.FC = () => {
     <S.Container>
       <S.Title>댓글 달기</S.Title>
       <S.Comments>
-        {comments.length > 0 &&
-          comments.map((item) => <Comment key={item.commentId} comment={item.comment} />)}
+        {comments.length > 0 ? (
+          comments.map((item) => <Comment key={item.commentId} comment={item.comment} />)
+        ) : (
+          <S.Message>댓글이 없습니다</S.Message>
+        )}
       </S.Comments>
       <S.Footer>
         <S.CommentButton onClick={handleClickBtn}>댓글 달기</S.CommentButton>
