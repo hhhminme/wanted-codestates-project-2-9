@@ -1,5 +1,5 @@
 import React from "react";
-import ReviewItem from "./ReviewItem";
+import ReviewItem from "../../components/ReviewDetailItem";
 
 import { useParams } from "react-router-dom";
 const ReviewDetails = () => {

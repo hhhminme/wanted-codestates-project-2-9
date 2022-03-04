@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 import * as S from "./style";
 
-import ReviewItem from "src/components/ReviewItem";
+import ReviewItem from "src/components/ReviewGridItem";
 import SortOptions from "../SortOptions";
 import { RootState } from "src/redux/store";
 
