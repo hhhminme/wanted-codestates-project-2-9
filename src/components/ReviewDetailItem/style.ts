@@ -6,6 +6,11 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  & + & {
+    margin-top: 30px;
+  }
 `;
 
 export const Img = styled.img``;
