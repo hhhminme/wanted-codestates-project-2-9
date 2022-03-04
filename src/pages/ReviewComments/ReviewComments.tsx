@@ -7,6 +7,7 @@ import * as S from "./style";
 import { CommentType } from "src/redux/reviews/types";
 import Comment from "src/components/Comment";
 import CommentForm from "src/components/CommentForm";
+import ModalPortals from "src/components/CommentForm/ModalPortals";
 
 const ReviewComments: React.FC = () => {
   const data = useSelector((state: RootState) => state.reviews);
@@ -36,7 +37,11 @@ const ReviewComments: React.FC = () => {
       <S.Footer>
         <S.CommentButton onClick={handleClickBtn}>댓글 달기</S.CommentButton>
       </S.Footer>
-      {show && <CommentForm setShow={setShow} id={id as string} />}
+      {show && (
+        <ModalPortals>
+          <CommentForm setShow={setShow} id={id as string} />
+        </ModalPortals>
+      )}
     </S.Container>
   );
 };

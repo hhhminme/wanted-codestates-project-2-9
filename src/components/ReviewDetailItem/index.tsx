@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ForwardedRef, forwardRef, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import Meta from "src/components/Meta";
@@ -13,7 +13,8 @@ interface reviewId {
   reviewId: string;
   isPage?: boolean;
 }
-const ReviewItem = ({ reviewId, isPage = false }: reviewId) => {
+const ReviewDetailItem = (props: reviewId, ref: ForwardedRef<HTMLDivElement>) => {
+  const { reviewId, isPage = false } = props;
   const { id, productImg, likeCnt, productNm, review, reviewRate, createDt } =
     useGetReviewById(reviewId);
 
@@ -58,32 +59,34 @@ const ReviewItem = ({ reviewId, isPage = false }: reviewId) => {
   return (
     <>
       {isPage && <Meta data={metaData} />}
-      <S.Wrapper>
+      <S.Wrapper ref={ref}>
         <S.Img src={productImg[0]} />
-        <S.Mid1>
-          <S.Section>
-            {clickLike && <S.ClickedLikeBtn onClick={handleLikeBtn} size={20} />}
-            {!clickLike && <S.NotClickedLikeBtn onClick={handleLikeBtn} size={20} />}
-            <S.H3>{likeCnt}</S.H3>
-          </S.Section>
-          <S.Section>
-            <S.CommentBtn size={20} onClick={handleCommentBtn} />
-            <S.ShareBtn onClick={handleShareBtn} size={20} />
-          </S.Section>
-        </S.Mid1>
-        <S.Mid1>
-          <S.Section>
-            {starActive.map((active, idx) => (
-              <Star key={idx} active={active} />
-            ))}
-          </S.Section>
+        <S.InfoContainer>
+          <S.Mid1>
+            <S.Section>
+              {clickLike && <S.ClickedLikeBtn onClick={handleLikeBtn} size={20} />}
+              {!clickLike && <S.NotClickedLikeBtn onClick={handleLikeBtn} size={20} />}
+              <S.H3>{likeCnt}</S.H3>
+            </S.Section>
+            <S.Section>
+              <S.CommentBtn size={20} onClick={handleCommentBtn} />
+              <S.ShareBtn onClick={handleShareBtn} size={20} />
+            </S.Section>
+          </S.Mid1>
+          <S.Mid1>
+            <S.StarContainer>
+              {starActive.map((active, idx) => (
+                <Star key={idx} active={active} />
+              ))}
+            </S.StarContainer>
+          </S.Mid1>
+          <S.H1>{productNm}</S.H1>
+          <S.P>{review}</S.P>
           <S.H3>{createAt()}</S.H3>
-        </S.Mid1>
-        <S.H1>{productNm}</S.H1>
-        <S.P>{review}</S.P>
+        </S.InfoContainer>
       </S.Wrapper>
     </>
   );
 };
 
-export default ReviewItem;
+export default forwardRef(ReviewDetailItem);
