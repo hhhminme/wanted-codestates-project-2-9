@@ -1,27 +1,27 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { MOCK_DATA } from "./data";
+
+// import { Review } from "../assets/data";
+// import data from "../assets/data";
 // type Opaque<T, K extends string> = T & { __typename: K };
 // type Base64 = Opaque<string, "base64">;
 
-interface Review {
+export type Review = {
   id: string;
   productNm: string;
-  productImg: string;
-  createDt: string;
+  productImg: string[];
+  likeCnt: number;
+  createDt: number;
   review: string;
   reviewRate: number;
-  likeCnt: number;
-  comments: Comment[];
-}
-
-type Comment = {
-  commentId: string;
-  content: string;
+  comments: {
+    commentId?: string;
+    content?: string;
+  }[];
 };
 
 export const reviewSlice = createSlice({
   name: "reviews",
-  initialState: MOCK_DATA as Review[],
+  initialState: [] as Review[],
   reducers: {
     add: (state: Review[], action: PayloadAction<Review>) => {
       state.push(action.payload);
