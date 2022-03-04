@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 
 import { RootState } from "src/redux/store";
-import { add } from "../../redux/reviewSlice";
+import { addReview } from 'src/redux/reviews/reviewSlice';
 import * as S from "./style";
 import Stars from "src/components/Stars";
 import { Blob } from "buffer";
-import { Review } from "../../redux/reviewSlice";
+import { Review } from "../../redux/reviews/types";
 
 function ReviewDetails() {
   const starArray = [1, 2, 3, 4, 5];
@@ -67,7 +67,7 @@ function ReviewDetails() {
         likeCnt: 0,
         comments: [],
       };
-      dispatch(add(data));
+      dispatch(addReview(data));
       console.log("submited!!!");
     }
   };

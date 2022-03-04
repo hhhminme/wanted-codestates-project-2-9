@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ReviewData } from "../../assets/data";
+import { ReviewData } from "../../redux/reviews/types";
 import data from "../../assets/data";
 
 import * as S from "./style";
@@ -76,9 +76,9 @@ function ReviewGrid() {
       <S.ReviewsWrapper>
         {reviews.map((item, index) => {
           if (index === reviews.length - 7) {
-            return <ReviewItem ref={targetRef} key={index} reviewImg={item.productImg} />;
+            return <ReviewItem ref={targetRef} key={index} reviewImg={item.productImg[0]} />;
           }
-          return <ReviewItem reviewImg={item.productImg} key={index} />;
+          return <ReviewItem reviewImg={item.productImg[0]} key={index} />;
         })}
       </S.ReviewsWrapper>
     </S.ReviewListWrapper>
