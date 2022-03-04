@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 
 import { useGetReviewById } from "./utils/useGetReviewById";
 import * as S from "./style";
-import { reviews } from "src/redux/reviews";
 import Meta from "src/components/Meta";
 import { copyToClipboard } from "./utils/copyToClipboard";
+import { updateLikeCnt } from "src/redux/reviews/reviewSlice";
 
 const ReviewDetails = () => {
   const { id, productImg, likeCnt, productNm, review } = useGetReviewById();
@@ -16,7 +16,7 @@ const ReviewDetails = () => {
     const increaseLike = !clickLike;
 
     setClickLike((prevClickLike) => !prevClickLike);
-    dispatch(reviews.actions.updateLikeCnt(id, increaseLike));
+    dispatch(updateLikeCnt(id, increaseLike));
   };
 
   const metaData = {
@@ -31,7 +31,7 @@ const ReviewDetails = () => {
     <>
       <Meta data={metaData} />
       <S.Wrapper>
-        <S.Img src={productImg} />
+        <S.Img src={productImg[0]} />
         <S.Mid1>
           <S.Section>
             {clickLike && <S.ClickedLikeBtn onClick={handleLikeBtn} size={20} />}

@@ -1,19 +1,22 @@
-type Reviews = {
+export type Review = {
   id: string;
   productNm: string;
-  productImg: string;
-  createDt: string;
+  productImg: string[];
+  likeCnt: number;
+  createDt: number;
   review: string;
   reviewRate: number;
-  likeCnt: number;
-  comments: TypeComments;
+  comments: CommentType[];
 };
-type TypeComments =
-  | {
-      commentId: string;
-      content: string;
-    }[]
-  | [];
-export interface ReviewState {
-  data: Reviews[];
-}
+
+export type ReviewData = Review[];
+
+export type CommentType = {
+  commentId: string;
+  comment: string;
+};
+
+export type CommentPayload = {
+  id: string;
+  comment: string;
+};
