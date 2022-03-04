@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ReviewData } from "../../redux/reviews/types";
-import data from "../../assets/data";
+import { useSelector } from "react-redux";
 
 import * as S from "./style";
 
 import ReviewItem from "src/components/ReviewItem";
 import SortOptions from "../SortOptions";
+import { RootState } from "src/redux/store";
 
 const sortOptionsData = [
   { id: 1, option: "최신순" },
@@ -15,10 +16,10 @@ const sortOptionsData = [
 ];
 
 function ReviewGrid() {
+  const itemData = useSelector((state: RootState) => state.reviews);
   const [sortOption, setSortOption] = useState("최신순");
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const [reviews, setReviews] = useState<ReviewData>(data.slice(0, 30));
-  const [reviewsPage, setReviewsPage] = useState<number>(1);
+  const [reviews, setReviews] = useState<ReviewData>(itemData.slice(0, 30));
+  const [reviewsPage, setReviewsPage] = useState<number>(0);
   const observerRef = React.useRef<IntersectionObserver>();
   const targetRef = useRef<HTMLDivElement>(null);
 
@@ -46,8 +47,8 @@ function ReviewGrid() {
   }, [reviews]);
 
   const getData = () => {
-    if (data.length >= (reviewsPage + 1) * 30) {
-      const additionalData = data.slice(reviewsPage * 30, (reviewsPage + 1) * 30);
+    if (itemData.length >= (reviewsPage + 1) * 30) {
+      const additionalData = itemData.slice(reviewsPage * 30, (reviewsPage + 1) * 30);
       setReviewsPage((reviewsPage) => reviewsPage + 1);
       setReviews([...reviews, ...additionalData]);
     }
