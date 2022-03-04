@@ -6,11 +6,14 @@ import * as S from "./style";
 import Meta from "src/components/Meta";
 import { copyToClipboard } from "./utils/copyToClipboard";
 import { updateLikeCnt } from "src/redux/reviews/reviewSlice";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ReviewDetails = () => {
   const { id, productImg, likeCnt, productNm, review } = useGetReviewById();
   const [clickLike, setClickLike] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const handleLikeBtn = () => {
     const increaseLike = !clickLike;
@@ -19,10 +22,14 @@ const ReviewDetails = () => {
     dispatch(updateLikeCnt(id, increaseLike));
   };
 
+  const handleCommentBtn = () => {
+    navigate(`${pathname}/comments`);
+  };
+
   const metaData = {
     title: "❤️발란❤️ 리뷰 페이지",
     description: "작성된 리뷰를 확인해 보세요!",
-    canonical: "http://127.0.0.1:8080/details/1",
+    canonical: window?.location?.href,
   };
   const handleShareBtn = () => {
     copyToClipboard(window.location.href);
@@ -39,7 +46,7 @@ const ReviewDetails = () => {
             <S.H3>{likeCnt}</S.H3>
           </S.Section>
           <S.Section>
-            <S.CommentBtn size={20} />
+            <S.CommentBtn size={20} onClick={handleCommentBtn} />
             <S.ShareBtn onClick={handleShareBtn} size={20} />
           </S.Section>
         </S.Mid1>

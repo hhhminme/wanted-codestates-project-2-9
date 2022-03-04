@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { MdAddPhotoAlternate } from "react-icons/md";
 
 import { RootState } from "src/redux/store";
-import { addReview } from 'src/redux/reviews/reviewSlice';
+import { addReview } from "src/redux/reviews/reviewSlice";
 import * as S from "./style";
 import Stars from "src/components/Stars";
 import { Blob } from "buffer";
