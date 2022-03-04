@@ -18,7 +18,7 @@ export const TitleInput = styled.input`
   width: 100%;
   height: 3.9rem;
   padding: 0.6rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   outline: none;
   border: 1px solid #ccc;
   border-radius: 0.2rem;
@@ -35,7 +35,7 @@ export const ContentInput = styled.textarea`
   resize: none;
   width: 100%;
   padding: 0.6rem;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.5rem;
   border-radius: 0.2rem;
   outline: none;
   border: 1px solid #ccc;
@@ -53,7 +53,8 @@ export const ImgUploadBtn = styled.button`
   background-color: #000;
   color: #fff;
   padding: 0.5rem;
-  margin-bottom: 2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
   border-radius: 0.2rem;
   font-weight: bold;
 `;
@@ -107,4 +108,9 @@ export const SummitBtn = styled.button`
   padding: 0.5rem;
   border-radius: 0.2rem;
   font-weight: bold;
+`;
+
+export const RegExMsg = styled.p`
+  font-size: 1.2rem;
+  color: #dd4a48;
 `;

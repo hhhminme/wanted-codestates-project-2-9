@@ -16,6 +16,9 @@ function ReviewRegister() {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
 
+  const [titleRegEx, setTitleRegEx] = useState(true);
+  const [contentRegEx, setContentRegEx] = useState(true);
+
   const titleInput = useRef<HTMLInputElement>(null);
   const contentInput = useRef<HTMLTextAreaElement>(null);
   const imageInput = useRef<HTMLInputElement>(null);
@@ -41,6 +44,9 @@ function ReviewRegister() {
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (titleRegEx === false || contentRegEx === false || rating < 1) {
+      console.log("필요한 항목을 모두 입력해주세요");
+    }
     e.preventDefault();
     if (images) {
       const data: Review = {
@@ -59,6 +65,17 @@ function ReviewRegister() {
       navigate("/");
     }
   };
+  const RegExValidation = (value: string) => {
+    const regex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|\s|\\.|!|?|~]+$/;
+    return regex.test(value);
+  };
+
+  const handleChangeRegEx = (
+    e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>,
+    setter: React.Dispatch<React.SetStateAction<boolean>>,
+  ) => {
+    e.target.value !== "" ? setter(RegExValidation(e.target.value)) : setter(true);
+  };
 
   return (
     <S.ReviewWrap>
@@ -71,7 +88,12 @@ function ReviewRegister() {
             type="text"
             placeholder="리뷰 제목을 입력해주세요"
             ref={titleInput}
+            required
+            onChange={(e) => handleChangeRegEx(e, setTitleRegEx)}
           />
+          {!titleRegEx && (
+            <S.RegExMsg>한글,영어 및 .~!?를 제외한 특수문자는 사용하실 수 없습니다.</S.RegExMsg>
+          )}
         </div>
         <div>
           <S.LabelTitle htmlFor="content">내용</S.LabelTitle>
@@ -82,9 +104,15 @@ function ReviewRegister() {
             cols={10}
             maxLength={100}
             placeholder="리뷰 내용을 입력해주세요"
+            required
             ref={contentInput}
+            onChange={(e) => handleChangeRegEx(e, setContentRegEx)}
           />
+          {!contentRegEx && (
+            <S.RegExMsg>한글,영어 및 .~!?를 제외한 특수문자는 사용하실 수 없습니다.</S.RegExMsg>
+          )}
         </div>
+
         <input
           type="file"
           onChange={handleChangeUpload}
@@ -94,7 +122,6 @@ function ReviewRegister() {
           hidden
         />
         <div>
-          <MdAddPhotoAlternate fill="#fff" />
           <S.ImgUploadBtn onClick={handleClickUpload}>이미지 업로드</S.ImgUploadBtn>
         </div>
         <S.PreviewWrap>
@@ -106,6 +133,7 @@ function ReviewRegister() {
             ))}
         </S.PreviewWrap>
         <S.StarTitle>평점</S.StarTitle>
+        {rating < 1 && <S.RegExMsg>평점을 입력해주세요.</S.RegExMsg>}
         <S.starWrap>
           {starArray.map((idx) => {
             return (
@@ -120,6 +148,7 @@ function ReviewRegister() {
             );
           })}
         </S.starWrap>
+
         <S.SummitBtn type="submit">리뷰 등록하기</S.SummitBtn>
       </S.formWrap>
     </S.ReviewWrap>
