@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import * as S from "./style";
-import { addComment } from "../../redux/reviews/index";
+import { addComment } from "../../redux/reviews/reviewSlice";
 
 interface Props {
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
