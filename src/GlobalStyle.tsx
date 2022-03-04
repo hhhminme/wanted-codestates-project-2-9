@@ -12,9 +12,7 @@ const GlobalStyle = createGlobalStyle`
   a {text-decoration:none}
   table {border-collapse:collapse;border-spacing:0}
 
-  * { 
-    font-family: "Roboto", "sans-serif"
-  }
+  * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 `;
 
 export default GlobalStyle;

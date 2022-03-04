@@ -31,9 +31,11 @@ const ReviewDetailItem = (props: reviewId, ref: ForwardedRef<HTMLDivElement>) =>
   };
 
   const handleCommentBtn = () => {
-    console.log(pathname);
-
-    navigate(`${pathname}/comments`);
+    if (pathname.includes("details")) {
+      navigate(`${pathname}/comments`);
+    } else {
+      navigate(`/details/${id}/comments`);
+    }
   };
 
   const metaData = {
