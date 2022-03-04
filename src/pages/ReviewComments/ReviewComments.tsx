@@ -24,9 +24,8 @@ const ReviewComments: React.FC = () => {
   };
 
   return (
-    <S.Container>
-      ?
-      <S.Wrapper>
+    <>
+      <S.Container>
         <S.Title>댓글 달기</S.Title>
         <S.Comments>
           {comments.length > 0 &&
@@ -35,9 +34,9 @@ const ReviewComments: React.FC = () => {
         <S.Footer>
           <S.CommentButton onClick={handleClickBtn}>댓글 달기</S.CommentButton>
         </S.Footer>
-      </S.Wrapper>
+      </S.Container>
       {show && <CommentForm setShow={setShow} id={id as string} />}
-    </S.Container>
+    </>
   );
 };
 

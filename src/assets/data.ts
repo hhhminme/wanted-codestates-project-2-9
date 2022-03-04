@@ -9,7 +9,60 @@ const data: ReviewData = [
     review: "무난하게 데일리로 활용중입니다.",
     reviewRate: 3,
     likeCnt: 244,
-    comments: [],
+    comments: [
+      {
+        commentId: "1",
+        comment: "무난하게 데일리로 활용중입니다.",
+      },
+      {
+        commentId: "2",
+        comment: "무난하게 데일리로 활용중입니다.",
+      },
+      {
+        commentId: "3",
+        comment: "무난하게 데일리로 활용중입니다.",
+      },
+      {
+        commentId: "4",
+        comment: "무난하게 데일리로 활용중입니다.",
+      },
+      {
+        commentId: "5",
+        comment: "무난하게 데일리로 활용중입니다.",
+      },
+      {
+        commentId: "6",
+        comment: "무난하게 데일리로 활용중입니다.",
+      },
+      {
+        commentId: "7",
+        comment: "무난하게 데일리로 활용중입니다.",
+      },
+      {
+        commentId: "8",
+        comment: "무난하게 데일리로 활용중입니다.",
+      },
+      {
+        commentId: "9",
+        comment: "무난하게 데일리로 활용중입니다.",
+      },
+      {
+        commentId: "10",
+        comment: "무난하게 데일리로 활용중입니다.",
+      },
+      {
+        commentId: "11",
+        comment: "무난하게 데일리로 활용중입니다.",
+      },
+      {
+        commentId: "12",
+        comment: "무난하게 데일리로 활용중입니다.",
+      },
+      {
+        commentId: "13",
+        comment: "무난하게 데일리로 활용중입니다.",
+      },
+    ],
   },
   {
     id: "37318832-9ab8-11ec-b909-0242ac120002",
