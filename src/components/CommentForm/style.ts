@@ -34,6 +34,7 @@ export const Textarea = styled.textarea`
   padding-left: 7px;
   border: 1px solid black;
   outline: none;
+  resize: none;
 `;
 
 export const TextCounter = styled.div`
