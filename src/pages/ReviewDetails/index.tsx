@@ -7,9 +7,10 @@ import Meta from "src/components/Meta";
 import { copyToClipboard } from "./utils/copyToClipboard";
 import { updateLikeCnt } from "src/redux/reviews/reviewSlice";
 import { useLocation, useNavigate } from "react-router-dom";
+import Star from "./Star";
 
 const ReviewDetails = () => {
-  const { id, productImg, likeCnt, productNm, review } = useGetReviewById();
+  const { id, productImg, likeCnt, productNm, review, reviewRate, createDt } = useGetReviewById();
   const [clickLike, setClickLike] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -34,6 +35,17 @@ const ReviewDetails = () => {
   const handleShareBtn = () => {
     copyToClipboard(window.location.href);
   };
+  const starActive = new Array(5).fill(0).map((_, idx) => idx < reviewRate);
+  const createAt = () => {
+    const a = new Date(createDt)
+      .toLocaleString("ko-KR")
+      .split(" ")
+      .slice(0, 3)
+      .join("")
+      .replace(/\./g, "-");
+    return a.substring(0, a.length - 1);
+  };
+
   return (
     <>
       <Meta data={metaData} />
@@ -49,6 +61,14 @@ const ReviewDetails = () => {
             <S.CommentBtn size={20} onClick={handleCommentBtn} />
             <S.ShareBtn onClick={handleShareBtn} size={20} />
           </S.Section>
+        </S.Mid1>
+        <S.Mid1>
+          <S.Section>
+            {starActive.map((active, idx) => (
+              <Star key={idx} active={active} />
+            ))}
+          </S.Section>
+          <S.H3>{createAt()}</S.H3>
         </S.Mid1>
         <S.H1>{productNm}</S.H1>
         <S.P>{review}</S.P>
