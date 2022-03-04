@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BsGrid3X3, BsViewList } from "react-icons/bs";
 import ViewTab from "src/components/ViewTab";
 import ReviewGrid from "src/components/ReviewGrid";
+import ReviewListView from "src/components/ReviewListView";
 
 import { BsArrowUpShort } from "react-icons/bs";
 import * as S from "./style";
@@ -18,7 +19,7 @@ function ReviewList() {
     <div>
       <ViewTab data={tabData} tabHandler={(type: string) => setViewType(type)} />
       {viewType === "grid" && <ReviewGrid />}
-      {viewType === "list" && <div>리스트 뷰 데이터 뿌려</div>}
+      {viewType === "list" && <ReviewListView />}
       <S.ScrollTopButton onClick={() => window.scrollTo(0, 0)}>
         <BsArrowUpShort />
       </S.ScrollTopButton>
