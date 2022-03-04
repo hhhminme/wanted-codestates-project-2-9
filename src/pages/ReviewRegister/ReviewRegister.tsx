@@ -1,16 +1,16 @@
 import React, { useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { MdAddPhotoAlternate } from "react-icons/md";
 
-import { RootState } from "src/redux/store";
 import { addReview } from "src/redux/reviews/reviewSlice";
 import * as S from "./style";
 import Stars from "src/components/Stars";
 import { Blob } from "buffer";
 import { Review } from "../../redux/reviews/types";
+import { useNavigate } from "react-router-dom";
 
-function ReviewDetails() {
+function ReviewRegister() {
   const starArray = [1, 2, 3, 4, 5];
   const [images, setImages] = useState<string[] | null>(null);
   const [rating, setRating] = useState(0);
@@ -20,9 +20,9 @@ function ReviewDetails() {
   const contentInput = useRef<HTMLTextAreaElement>(null);
   const imageInput = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
-  const reviews = useSelector((state: RootState) => state.reviews);
+  const navigate = useNavigate();
 
-  const handleClickUpload = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClickUpload = () => {
     imageInput.current?.click();
   };
 
@@ -56,7 +56,7 @@ function ReviewDetails() {
         comments: [],
       };
       dispatch(addReview(data));
-      console.log("submited!!!");
+      navigate("/");
     }
   };
 
@@ -97,8 +97,6 @@ function ReviewDetails() {
           <MdAddPhotoAlternate fill="#fff" />
           <S.ImgUploadBtn onClick={handleClickUpload}>이미지 업로드</S.ImgUploadBtn>
         </div>
-
-        {/* 미리보기 */}
         <S.PreviewWrap>
           {images &&
             images.map((image, idx) => (
@@ -124,22 +122,8 @@ function ReviewDetails() {
         </S.starWrap>
         <S.SummitBtn type="submit">리뷰 등록하기</S.SummitBtn>
       </S.formWrap>
-
-      {/* 테스트 */}
-      {/* {reviews &&
-        reviews.map((review, idx) => (
-          <div key={idx}>
-            <h2>{review.productNm}</h2>
-            <h2>{review.review}</h2>
-            <h2>{review.reviewRate}</h2>
-            <h2>{review.createDt}</h2>
-            {review.productImg.map((img, id) => (
-              <img style={{ width: "100px" }} key={id} src={img} />
-            ))}
-          </div>
-        ))} */}
     </S.ReviewWrap>
   );
 }
 
-export default ReviewDetails;
+export default ReviewRegister;

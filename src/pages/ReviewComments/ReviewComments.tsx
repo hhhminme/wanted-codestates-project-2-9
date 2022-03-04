@@ -25,17 +25,17 @@ const ReviewComments: React.FC = () => {
 
   return (
     <S.Container>
-      ?
-      <S.Wrapper>
-        <S.Title>댓글 달기</S.Title>
-        <S.Comments>
-          {comments.length > 0 &&
-            comments.map((item) => <Comment key={item.commentId} comment={item.comment} />)}
-        </S.Comments>
-        <S.Footer>
-          <S.CommentButton onClick={handleClickBtn}>댓글 달기</S.CommentButton>
-        </S.Footer>
-      </S.Wrapper>
+      <S.Title>댓글 달기</S.Title>
+      <S.Comments>
+        {comments.length > 0 ? (
+          comments.map((item) => <Comment key={item.commentId} comment={item.comment} />)
+        ) : (
+          <S.Message>댓글이 없습니다</S.Message>
+        )}
+      </S.Comments>
+      <S.Footer>
+        <S.CommentButton onClick={handleClickBtn}>댓글 달기</S.CommentButton>
+      </S.Footer>
       {show && <CommentForm setShow={setShow} id={id as string} />}
     </S.Container>
   );

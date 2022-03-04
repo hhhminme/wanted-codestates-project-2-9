@@ -2,12 +2,13 @@ import styled from "styled-components";
 
 export const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.25);
-  width: 100vw;
+  width: 390px;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
+  top: 0;
   z-index: 100;
 `;
 
@@ -31,6 +32,8 @@ export const Textarea = styled.textarea`
   height: 200px;
   font-size: 1.6rem;
   padding-left: 7px;
+  border: 1px solid black;
+  outline: none;
 `;
 
 export const TextCounter = styled.div`
@@ -51,6 +54,10 @@ export const CancelBtn = styled.button`
   font-size: 1.4rem;
   padding: 5px 15px;
   border-radius: 3px;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export const ConfirmBtn = styled(CancelBtn)``;
