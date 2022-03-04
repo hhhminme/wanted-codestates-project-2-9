@@ -8,6 +8,7 @@ interface Props {
   hoverRating: number;
   setHoverRating: React.Dispatch<React.SetStateAction<number>>;
   setRating: React.Dispatch<React.SetStateAction<number>>;
+  setState: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function Stars(props: Props) {
@@ -17,7 +18,10 @@ function Stars(props: Props) {
   // 마우스가 별 위에 올라가면 스테이트를 변경.
   const onMouseLeave = () => props.setHoverRating(0);
   // 마우스가 별 밖으로 나가면 스테이트를 0으로 변경.
-  const onSaveRating = (index: number) => props.setRating(index);
+  const onSaveRating = (index: number) => {
+    props.setRating(index);
+    props.setState(false);
+  };
   // 클릭시, 별 인덱스를 스테이트에 저장.
 
   const fillColor = useMemo(() => {
