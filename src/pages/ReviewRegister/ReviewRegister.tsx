@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import { MdAddPhotoAlternate } from "react-icons/md";
 
 import { RootState } from "src/redux/store";
 import { add } from "../../redux/reviewSlice";
@@ -12,41 +13,28 @@ import { Review } from "../../redux/reviewSlice";
 function ReviewDetails() {
   const starArray = [1, 2, 3, 4, 5];
   const [images, setImages] = useState<string[] | null>(null);
-
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
 
-  const onMouseEnter = (index: number) => setHoverRating(index);
-  // 마우스가 별 위에 올라가면 스테이트를 변경.
-  const onMouseLeave = () => setHoverRating(0);
-  // 마우스가 별 밖으로 나가면 스테이트를 0으로 변경.
-  const onSaveRating = (index: number) => setRating(index);
-  // 클릭시, 별 인덱스를 스테이트에 저장.
-
   const titleInput = useRef<HTMLInputElement>(null);
-  const contentInput = useRef<HTMLInputElement>(null);
+  const contentInput = useRef<HTMLTextAreaElement>(null);
   const imageInput = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
   const reviews = useSelector((state: RootState) => state.reviews);
 
   const handleClickUpload = (e: React.MouseEvent<HTMLButtonElement>) => {
     imageInput.current?.click();
-    console.dir(e.target);
-    console.log("click");
   };
 
   const handleChangeUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     const blobFiles: string[] = [];
-    console.log(e.target.files);
 
     if (files) {
       // @ts-ignore
       for (const file of files) {
-        console.log(file);
         // @ts-ignore
         blobFiles.push(URL.createObjectURL(file as Blob));
-
         setImages(blobFiles);
       }
     }
@@ -68,23 +56,34 @@ function ReviewDetails() {
         comments: [],
       };
       dispatch(add(data));
-      console.log("submited!!!");
     }
   };
 
-  console.log("images", images);
-
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          제목
-          <input type="text" ref={titleInput}></input>
-        </label>
-        <label>
-          내용
-          <input type="textarea" ref={contentInput} />
-        </label>
+    <S.ReviewWrap>
+      <S.formWrap onSubmit={handleSubmit}>
+        <div>
+          <S.LabelTitle htmlFor="title">제목</S.LabelTitle>
+          <S.TitleInput
+            id="title"
+            name="title"
+            type="text"
+            placeholder="리뷰 제목을 입력해주세요"
+            ref={titleInput}
+          />
+        </div>
+        <div>
+          <S.LabelTitle htmlFor="content">내용</S.LabelTitle>
+          <S.ContentInput
+            id="content"
+            name="content"
+            rows={4}
+            cols={10}
+            maxLength={100}
+            placeholder="리뷰 내용을 입력해주세요"
+            ref={contentInput}
+          />
+        </div>
         <input
           type="file"
           onChange={handleChangeUpload}
@@ -93,8 +92,21 @@ function ReviewDetails() {
           multiple
           hidden
         />
-        <button onClick={handleClickUpload}>이미지 업로드</button>
+        <div>
+          <MdAddPhotoAlternate fill="#fff" />
+          <S.ImgUploadBtn onClick={handleClickUpload}>이미지 업로드</S.ImgUploadBtn>
+        </div>
 
+        {/* 미리보기 */}
+        <S.PreviewWrap>
+          {images &&
+            images.map((image, idx) => (
+              <S.PreviewImgWrap key={idx}>
+                <S.PreviewImg src={image} />
+              </S.PreviewImgWrap>
+            ))}
+        </S.PreviewWrap>
+        <S.StarTitle>평점</S.StarTitle>
         <S.starWrap>
           {starArray.map((idx) => {
             return (
@@ -103,21 +115,17 @@ function ReviewDetails() {
                 index={idx}
                 rating={rating}
                 hoverRating={hoverRating}
-                onMouseEnter={onMouseEnter}
-                onMouseLeave={onMouseLeave}
-                onSaveRating={onSaveRating}
+                setHoverRating={setHoverRating}
+                setRating={setRating}
               />
             );
           })}
         </S.starWrap>
-        <button type="submit">리뷰 등록하기</button>
-      </form>
-      {/* 미리보기 */}
-      {images &&
-        images.map((image, idx) => <img style={{ width: "100px" }} key={idx} src={image} />)}
+        <S.SummitBtn type="submit">리뷰 등록하기</S.SummitBtn>
+      </S.formWrap>
 
       {/* 테스트 */}
-      {reviews &&
+      {/* {reviews &&
         reviews.map((review, idx) => (
           <div key={idx}>
             <h2>{review.productNm}</h2>
@@ -128,8 +136,8 @@ function ReviewDetails() {
               <img style={{ width: "100px" }} key={id} src={img} />
             ))}
           </div>
-        ))}
-    </div>
+        ))} */}
+    </S.ReviewWrap>
   );
 }
 
