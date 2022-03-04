@@ -23,11 +23,6 @@ function ReviewGrid() {
   const targetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log("페이지 변경");
-    console.log(reviewsPage);
-  }, [reviewsPage]);
-
-  useEffect(() => {
     const reviewsCopy = [...reviews];
 
     switch (sortOption) {

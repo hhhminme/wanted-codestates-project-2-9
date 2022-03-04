@@ -1,9 +1,8 @@
-
 import { ReviewData } from "../redux/reviews/types";
 
 const data: ReviewData = [
   {
-    id: "3731858a-9ab8-11ec-b909-0242ac120002",
+    id: "1",
     productNm: "블랙 핸드백",
     productImg: ["https://i.balaan.io/review/c836c897ce27f22497d14d8e9f461ece.webp"],
     createDt: 1645401600,
@@ -733,7 +732,7 @@ const data: ReviewData = [
   {
     id: "d710d896-9af7-11ec-b909-0242ac120002",
     productNm: "버티칼 스몰 카바스백",
-    productImg: ["https://i.balaan.io/review/602fecb60deae8e3c98223512f1760ca.webp",],
+    productImg: ["https://i.balaan.io/review/602fecb60deae8e3c98223512f1760ca.webp"],
     createDt: 1646179200,
     review: "배송이 조금 늦었네요 ㅠㅜ 다른 건 다 만족스럽습니다!",
     reviewRate: 4,
