@@ -16,9 +16,16 @@ const sortOptionsData = [
 
 function ReviewGrid() {
   const [sortOption, setSortOption] = useState("최신순");
-  const [reviews, setReviews] = useState<ReviewData>(data);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const [reviews, setReviews] = useState<ReviewData>(data.slice(0, 30));
+  const [reviewsPage, setReviewsPage] = useState<number>(1);
   const observerRef = React.useRef<IntersectionObserver>();
   const targetRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    console.log("페이지 변경");
+    console.log(reviewsPage);
+  }, [reviewsPage]);
 
   useEffect(() => {
     const reviewsCopy = [...reviews];
@@ -34,7 +41,7 @@ function ReviewGrid() {
         reviewsCopy.sort(() => Math.random() - 0.5);
         return setReviews(reviewsCopy);
       default:
-        return setReviews(data);
+        return setReviews(reviews);
     }
   }, [sortOption]);
 
@@ -44,7 +51,11 @@ function ReviewGrid() {
   }, [reviews]);
 
   const getData = () => {
-    setReviews([...reviews, ...data]);
+    if (data.length >= (reviewsPage + 1) * 30) {
+      const additionalData = data.slice(reviewsPage * 30, (reviewsPage + 1) * 30);
+      setReviewsPage((reviewsPage) => reviewsPage + 1);
+      setReviews([...reviews, ...additionalData]);
+    }
   };
 
   const intersectionObserver = (entries: IntersectionObserverEntry[], io: IntersectionObserver) => {
