@@ -18,6 +18,12 @@ export const Comments = styled.ul`
   padding-bottom: 80px;
 `;
 
+export const Message = styled.p`
+  font-size: 1.4rem;
+  text-align: center;
+  margin-top: 30px;
+`;
+
 export const Footer = styled.footer`
   display: flex;
   flex-direction: column;

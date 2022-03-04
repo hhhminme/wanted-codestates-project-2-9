@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 import * as S from "./style";
 
-import ReviewItem from "src/components/ReviewItem";
+import ReviewItem from "src/components/ReviewGridItem";
 import SortOptions from "../SortOptions";
 import { RootState } from "src/redux/store";
 
@@ -72,9 +72,11 @@ function ReviewGrid() {
       <S.ReviewsWrapper>
         {reviews.map((item, index) => {
           if (index === reviews.length - 7) {
-            return <ReviewItem ref={targetRef} key={index} reviewImg={item.productImg[0]} />;
+            return (
+              <ReviewItem ref={targetRef} key={index} id={item.id} reviewImg={item.productImg[0]} />
+            );
           }
-          return <ReviewItem reviewImg={item.productImg[0]} key={index} />;
+          return <ReviewItem key={index} id={item.id} reviewImg={item.productImg[0]} />;
         })}
       </S.ReviewsWrapper>
     </S.ReviewListWrapper>
