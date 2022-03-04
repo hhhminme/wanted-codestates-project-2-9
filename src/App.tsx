@@ -13,11 +13,11 @@ const GlobalContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100vh;
-  /* overflow: scroll; */
+  overflow: scroll;
   background: white;
 
   &::-webkit-scrollbar {
-    /* display: none; */
+    display: none;
   }
 `;
 

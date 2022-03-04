@@ -47,8 +47,6 @@ function ReviewRegister() {
     }
   };
 
-  // 이미지는 업로드 됐으나 제목 혹은 내용이 정규 표현식에 맞지 않을
-  // 경우 모달을 띄우고 서밋이 되지 않게 한다.
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!images) {
@@ -98,8 +96,6 @@ function ReviewRegister() {
     } else {
       setter(true);
     }
-    // e.target.value !== "" ? setter(RegExValidation(e.target.value)) : setter(true);
-    // e.target.value.length >= e.target.maxLength ? setter(false) : setter(true);
   };
 
   return (

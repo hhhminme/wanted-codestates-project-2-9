@@ -19,10 +19,8 @@ if (rootElement?.hasChildNodes()) {
 } else {
   render(
     <Provider store={store}>
-      <React.StrictMode>
-        <GlobalStyle />
-        <App />
-      </React.StrictMode>
+      <GlobalStyle />
+      <App />
     </Provider>,
     rootElement,
   );

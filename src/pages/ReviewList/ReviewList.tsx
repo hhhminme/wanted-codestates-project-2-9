@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import { BsGrid3X3, BsViewList } from "react-icons/bs";
 import ViewTab from "src/components/ViewTab";
 import ReviewGridView from "src/components/ReviewGridView";
-<<<<<<< Updated upstream
-//import ReviewListView from "src/components/ReviewListView";
-=======
-// import ReviewListView from "src/components/ReviewListView";
->>>>>>> Stashed changes
+import ReviewListView from "src/components/ReviewListView";
 
 import { BsArrowUpShort } from "react-icons/bs";
 import * as S from "./style";
@@ -23,7 +19,7 @@ function ReviewList() {
     <div>
       <ViewTab data={tabData} tabHandler={(type: string) => setViewType(type)} />
       {viewType === "grid" && <ReviewGridView />}
-      {/* {viewType === "list" && <ReviewListView />} */}
+      {viewType === "list" && <ReviewListView />}
       <S.ScrollTopButton onClick={() => window.scrollTo(0, 0)}>
         <BsArrowUpShort />
       </S.ScrollTopButton>

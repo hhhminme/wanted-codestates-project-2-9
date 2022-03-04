@@ -31,6 +31,8 @@ const ReviewDetailItem = (props: reviewId, ref: ForwardedRef<HTMLDivElement>) =>
   };
 
   const handleCommentBtn = () => {
+    console.log(pathname);
+
     navigate(`${pathname}/comments`);
   };
 
@@ -69,8 +71,8 @@ const ReviewDetailItem = (props: reviewId, ref: ForwardedRef<HTMLDivElement>) =>
               <S.H3>{likeCnt}</S.H3>
             </S.Section>
             <S.Section>
-              <S.CommentBtn size={20} onClick={handleCommentBtn} />
-              <S.ShareBtn onClick={handleShareBtn} size={20} />
+              <S.CommentBtn size={20} type="button" onClick={handleCommentBtn} />
+              <S.ShareBtn type="button" onClick={handleShareBtn} size={20} />
             </S.Section>
           </S.Mid1>
           <S.Mid1>
