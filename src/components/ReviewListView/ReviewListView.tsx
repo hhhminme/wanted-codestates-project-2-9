@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { ReviewData } from "src/redux/reviews/types";
-
 import { RootState } from "src/redux/store";
+import * as S from "./style";
+
+import ReviewDetailItem from "../ReviewDetailItem";
 
 function ReviewListView() {
   const data = useSelector((state: RootState) => state.reviews);
@@ -38,22 +40,14 @@ function ReviewListView() {
   };
 
   return (
-    <div>
+    <S.ListViewContainer>
       {reviews.map((item, index) => {
         if (index === reviews.length - 2) {
-          return (
-            <div ref={targetRef} key={index}>
-              <img src={item.productImg[0]} />
-            </div>
-          );
+          return <ReviewDetailItem ref={targetRef} key={item.id} reviewId={item.id} />;
         }
-        return (
-          <div key={index}>
-            <img src={item.productImg[0]} />
-          </div>
-        );
+        return <ReviewDetailItem key={item.id} reviewId={item.id} />;
       })}
-    </div>
+    </S.ListViewContainer>
   );
 }
 
