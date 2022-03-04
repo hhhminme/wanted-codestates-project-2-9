@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { MdAddPhotoAlternate } from "react-icons/md";
 
 import { addReview } from "src/redux/reviews/reviewSlice";
 import * as S from "./style";
@@ -128,40 +127,33 @@ function ReviewRegister() {
       <S.formWrap onSubmit={handleSubmit}>
         <div>
           <S.LabelTitle htmlFor="title">제목</S.LabelTitle>
+          {!titleRegEx && <S.RegExMsg>한글과 영어 및 100자 이내로 작성해주세요.</S.RegExMsg>}
+
           <S.TitleInput
             id="title"
             name="title"
             type="text"
             placeholder="리뷰 제목을 입력해주세요"
-            maxLength={10}
+            maxLength={30}
             ref={titleInput}
             required
             onChange={(e) => handleChangeRegEx(e, setTitleRegEx)}
           />
-          {!titleRegEx && (
-            <S.RegExMsg>
-              30글자를 초과하거나 한글,영어 및 .~!?를 제외한 특수문자는 사용하실 수 없습니다.
-            </S.RegExMsg>
-          )}
         </div>
         <div>
           <S.LabelTitle htmlFor="content">내용</S.LabelTitle>
+          {!contentRegEx && <S.RegExMsg>한글과 영어 및 100자 이내로 작성해주세요.</S.RegExMsg>}
           <S.ContentInput
             id="content"
             name="content"
             rows={4}
             cols={10}
-            maxLength={10}
+            maxLength={100}
             placeholder="리뷰 내용을 입력해주세요"
             ref={contentInput}
             required
             onChange={(e) => handleChangeRegEx(e, setContentRegEx)}
           />
-          {!contentRegEx && (
-            <S.RegExMsg>
-              100글자를 초과하거나 한글,영어 및 .~!?를 제외한 특수문자는 사용하실 수 없습니다.
-            </S.RegExMsg>
-          )}
         </div>
 
         <input

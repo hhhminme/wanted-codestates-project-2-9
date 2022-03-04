@@ -39,7 +39,7 @@ function Stars(props: Props) {
       onMouseLeave={() => onMouseLeave()}
       onClick={() => onSaveRating(index)}
     >
-      <AiFillStar color={fillColor} size="2rem" />
+      <AiFillStar color={fillColor} size="5rem" />
     </div>
   );
 }

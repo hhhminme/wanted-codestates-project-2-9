@@ -9,7 +9,8 @@ export const ReviewWrap = styled.div`
 `;
 
 export const LabelTitle = styled.label`
-  font-size: 1.5rem;
+  display: inline-block;
+  font-size: 2rem;
   font-weight: bold;
 `;
 
@@ -18,7 +19,7 @@ export const TitleInput = styled.input`
   width: 100%;
   height: 3.9rem;
   padding: 0.6rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 3rem;
   outline: none;
   border: 1px solid #ccc;
   border-radius: 0.2rem;
@@ -35,7 +36,7 @@ export const ContentInput = styled.textarea`
   resize: none;
   width: 100%;
   padding: 0.6rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 3rem;
   border-radius: 0.2rem;
   outline: none;
   border: 1px solid #ccc;
@@ -49,13 +50,14 @@ export const ContentInput = styled.textarea`
 `;
 
 export const ImgUploadBtn = styled.button`
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   background-color: #000;
+  width: 100%;
   color: #fff;
-  padding: 0.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
-  border-radius: 0.2rem;
+  padding: 10px 20px;
+  margin-bottom: 3rem;
+  border: 2px solid black;
+  border-radius: 5px;
   font-weight: bold;
 `;
 
@@ -91,28 +93,33 @@ export const PreviewImg = styled.img`
 `;
 
 export const StarTitle = styled.h2`
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
-  margin-top: 1rem;
 `;
 
 export const starWrap = styled.div`
   display: flex;
-  margin-bottom: 2rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+  width: 100%;
 `;
 
 export const SummitBtn = styled.button`
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   background-color: #000;
+  width: 100%;
   color: #fff;
-  padding: 0.5rem;
-  border-radius: 0.2rem;
+  padding: 10px 20px;
+  border: 2px solid black;
+  border-radius: 5px;
   font-weight: bold;
 `;
 
 export const RegExMsg = styled.p`
-  font-size: 1.2rem;
+  display: inline-block;
+  font-size: 1rem;
   color: #dd4a48;
+  padding-left: 1rem;
 `;
 
 export const ModalWrap = styled.div`
@@ -130,16 +137,22 @@ export const ModalCard = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
-  width: 25%;
+  width: 50%;
   border: 0;
+  padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   background-color: white;
 `;
 
 export const ModalCloseBtn = styled.button`
-  padding: 0.5rem 1.5rem;
-  color: black;
+  font-size: 1.6rem;
+  background-color: #000;
+  width: 100%;
+  color: #fff;
+  padding: 10px 20px;
+  border: 2px solid black;
+  border-radius: 5px;
   font-weight: bold;
 `;
 
@@ -151,7 +164,9 @@ export const ModalContentWrap = styled.div`
 `;
 
 export const ModalContent = styled.h2`
+  font-size: 1.6rem;
   font-weight: 600;
+  margin-bottom: 3rem;
 `;
 
 export const modalBackground = styled.div`
