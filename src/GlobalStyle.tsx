@@ -11,6 +11,10 @@ const GlobalStyle = createGlobalStyle`
   button {background:none;border:0;cursor:pointer;}
   a {text-decoration:none}
   table {border-collapse:collapse;border-spacing:0}
+
+  * { 
+    font-family: "Roboto", "sans-serif"
+  }
 `;
 
 export default GlobalStyle;

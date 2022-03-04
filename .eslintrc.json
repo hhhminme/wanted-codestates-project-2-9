@@ -23,6 +23,8 @@
   ],
   "plugins": ["prettier", "@typescript-eslint"],
   "rules": {
-    "prettier/prettier": ["error", { "endOfLine": "auto" }]
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "@typescript-eslint/ban-ts-comment": 0,
+    "@typeacript-eslint/no-unsafe-assignment": 0
   }
 }
