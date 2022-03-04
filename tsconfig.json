@@ -19,6 +19,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/components/StarRating/Star.js"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/components/Stars/Star.js"],
   "exclude": ["node_modules"]
 }
