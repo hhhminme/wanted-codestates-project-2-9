@@ -47,7 +47,7 @@ function ReviewGrid() {
   }, [reviews]);
 
   const getData = () => {
-    if (itemData.length >= reviewsPage * 30) {
+    if (itemData.length >= (reviewsPage + 1) * 30) {
       const additionalData = itemData.slice(reviewsPage * 30, (reviewsPage + 1) * 30);
       setReviewsPage((reviewsPage) => reviewsPage + 1);
       setReviews([...reviews, ...additionalData]);
