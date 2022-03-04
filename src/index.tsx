@@ -1,17 +1,29 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { render, hydrate } from "react-dom";
+import App from "./App";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-
-import App from "./App";
 import GlobalStyle from "./GlobalStyle";
+const rootElement = document.getElementById("root");
 
-ReactDOM.render(
-  <React.StrictMode>
+if (rootElement?.hasChildNodes()) {
+  hydrate(
     <Provider store={store}>
-      <GlobalStyle />
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById("root"),
-);
+      <React.StrictMode>
+        <GlobalStyle />
+        <App />
+      </React.StrictMode>
+    </Provider>,
+    rootElement,
+  );
+} else {
+  render(
+    <Provider store={store}>
+      <React.StrictMode>
+        <GlobalStyle />
+        <App />
+      </React.StrictMode>
+    </Provider>,
+    rootElement,
+  );
+}
