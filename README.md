@@ -161,11 +161,11 @@ react-snap의 공식문서에 나와있는 대로 설정한 다음 package.json�
 
 하지만 app.tsx에서 라우팅을 정의한 경우 다음과 같은 에러가 발생하는것 같습니다.
 
-### 추후에 수정할 부분
+### 추후 구현
 
 시간이 부족하여 구현하지 못한 부분들이 있습니다.
 
-pathname을 통해 Review id를 가져오게 되는데 reviewId에 해당하는 review가 없을 때 안내 페이지 등 예외 처리를 할 예정입니다. (현재 pathname의 타입을 string으로 타입단언해주었습니다.)
+pathname을 통해 Review id를 가져오게 되는데 reviewId에 해당하는 review가 없을 때 안내 페이지 등 예외 처리를 할 예정입니다. (pathname은 string | undefined이지만 현재 타입을 string으로 타입단언해주었습니다.)
 
 테스트 배포 url이 존재하지 않고 main브랜치에서 마지막에 배포를 하다보니 동적으로 meta데이터를 넣어주는 부분을 개발 도중에 테스트를 하지 못했습니다. 확인해보니 현재는 meta데이터를 동적으로 받아오지 못하는 상황입니다. 
 
