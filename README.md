@@ -49,6 +49,7 @@ Intersection Observer API를 활용해서 제작하였으며 특정 컴포넌트
 
 
 ### 3팀 : 리뷰 상세 페이지 ([강동진](https://github.com/jinn2u), [오카무라카에](https://github.com/kaehehehe))
+
 ## review-detail Page구현 - [동진](https://github.com/jinn2u)
 
 ### 좋아요 구현하기
@@ -179,6 +180,29 @@ pathname을 통해 Review id를 가져오게 되는데 reviewId에 해당하는 
 테스트 배포 url이 존재하지 않고 main브랜치에서 마지막에 배포를 하다보니 동적으로 meta데이터를 넣어주는 부분을 개발 도중에 테스트를 하지 못했습니다. 확인해보니 현재는 meta데이터를 동적으로 받아오지 못하는 상황입니다. 
 
 공유하기를 통해 prerender된 페이지의 경우 styled-component를 받아오지 못하여 style이 깨지고 있습니다
+
+## review-comments Page 구현 - [카에](https://github.com/kaehehehe)
+1. 댓글 아이콘을 클릭 시 댓글 달기 페이지에 이동이 됩니다.
+<img width="389" alt="スクリーンショット 2022-03-08 17 40 21" src="https://user-images.githubusercontent.com/77221488/157199662-4de8a2ee-84e1-43f6-b3d3-3d6b90af15f0.png">
+<br />
+2. 댓글이 있을 때는 댓글이 나오고 만약 댓글이 없다면 "댓글이 없습니다"라는 코멘트가 나옵니다.
+<div style={display: flex}>	
+<img width="393" alt="スクリーンショット 2022-03-08 17 42 32" src="https://user-images.githubusercontent.com/77221488/157201165-2b261a23-069d-4c4c-8166-bae7c257fa0f.png">
+<img width="393" alt="スクリーンショット 2022-03-08 17 47 35" src="https://user-images.githubusercontent.com/77221488/157201201-bc99a58e-8407-4d31-bd35-3181527735c1.png">
+</div>
+<br />
+3. 댓글 달기 버튼을 클리 시 모달 창 현태로 댓글 달기 form이 나타납니다. <br />
+댓글을 달 수 있는 글자 수는 최대 500글자로 제안되어 있고 입력한 글자 수가 500을 넘을 시 입력이 안되도록 구혀했습니다.<br />
+또한 현재 입력한 글자 수도 확인 가능하도록 구현했습니다.
+
+
+<div style={display: flex}>
+<img width="390" alt="スクリーンショット 2022-03-08 17 50 57" src="https://user-images.githubusercontent.com/77221488/157202104-ed7ca4a6-bb15-4dd9-9a8c-0c3828ccdba8.png">
+
+<img width="391" alt="スクリーンショット 2022-03-08 17 57 29" src="https://user-images.githubusercontent.com/77221488/157202667-797ac29d-ef7e-48f3-b2c7-871eb81c325e.png">
+</div> 
+
+
 ## 팀원 소개
 
 | 이름         | 깃허브                                           |
